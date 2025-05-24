@@ -73,12 +73,13 @@ public class BookingService {
 
         Booking savedBooking = bookingRepository.save(booking);
 
-        // Send email notification for room booking
-        if (resourceType.equalsIgnoreCase("ROOM")) {
-            // You might want to get user's email from userId, here assume you have email
-            String userEmail = getUserEmailById(userId); // Implement this method accordingly
-            emailService.sendRoomStatusEmail(userEmail, resourceId, "BOOKED");
+        // Send booking notification to all users for both ROOM and EQUIPMENT
+        List<User> allUsers = userRepo.findAll();
+        for (User user : allUsers) {
+            emailService.sendRoomStatusEmail(user.getEmail(), resourceId, "BOOKED",start,end);
         }
+
+
 
         return savedBooking;
     }
@@ -108,9 +109,14 @@ public class BookingService {
                 roomRepository.save(room);
             });
 
-            // Send email notification that room is now free
-            String userEmail = getUserEmailById(userId); // Implement accordingly
-            emailService.sendRoomStatusEmail(userEmail, resourceId, "CANCELLED");
+            // Send room cancellation notification to all users
+            // Send cancellation notification to all users for both ROOM and EQUIPMENT
+            List<User> allUsers = userRepo.findAll();
+            for (User user : allUsers) {
+                emailService.sendRoomStatusEmail(user.getEmail(), resourceId, "CANCELLED",null,null);
+            }
+
+
 
         } else if ("EQUIPMENT".equalsIgnoreCase(resourceType)) {
             equipmentRepository.findById(resourceId).ifPresent(equipment -> {
