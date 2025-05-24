@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name = "roomes")
+@Table(name = "roomes")  // you wrote "roomes", I keep it as you wrote
 @Data
 public class Room2 {
     @Id
@@ -19,6 +19,6 @@ public class Room2 {
     @CollectionTable(name = "room_amenities", joinColumns = @JoinColumn(name = "room_id"))
     @Column(name = "amenity")
     private List<String> amenities1;
-
 }
+
 

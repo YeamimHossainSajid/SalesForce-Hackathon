@@ -27,24 +27,24 @@ public class BookingService {
         this.equipmentRepository = equipmentRepository;
     }
 
-    // Get all rooms
+
     public List<Room2> getAllRooms() {
         return roomRepository.findAll();
     }
 
-    // Get all equipment
+
     public List<Equipment> getAllEquipment() {
         return equipmentRepository.findAll();
     }
 
-    // Check if resource is available for given time range
+
     public boolean isResourceAvailable(String resourceId, LocalDateTime start, LocalDateTime end) {
         List<Booking> conflicting = bookingRepository.findByResourceIdAndStatusAndStartTimeLessThanAndEndTimeGreaterThan(
                 resourceId, "BOOKED", end, start);
         return conflicting.isEmpty();
     }
 
-    // Create a booking
+
     @Transactional
     public Booking bookResource(String userId, String resourceId, String resourceType,
                                 LocalDateTime start, LocalDateTime end) throws Exception {
@@ -52,7 +52,7 @@ public class BookingService {
             throw new Exception("Invalid resource type");
         }
 
-        // Check resource exists
+
         if (resourceType.equalsIgnoreCase("ROOM") && !roomRepository.existsById(resourceId)) {
             throw new Exception("Room not found");
         }
@@ -60,7 +60,7 @@ public class BookingService {
             throw new Exception("Equipment not found");
         }
 
-        // Check availability
+
         if (!isResourceAvailable(resourceId, start, end)) {
             throw new Exception("Resource not available at selected time");
         }
@@ -73,11 +73,11 @@ public class BookingService {
         booking.setEndTime(end);
         booking.setStatus("BOOKED");
 
-        // Save booking
+
         return bookingRepository.save(booking);
     }
 
-    // Cancel booking
+
     @Transactional
     public void cancelBooking(Long bookingId, String userId) throws Exception {
         Optional<Booking> opt = bookingRepository.findById(bookingId);
@@ -92,7 +92,7 @@ public class BookingService {
         bookingRepository.save(booking);
     }
 
-    // List bookings for user
+
     public List<Booking> getUserBookings(String userId) {
         return bookingRepository.findByUserId(userId);
     }
