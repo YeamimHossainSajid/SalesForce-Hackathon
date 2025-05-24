@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
-@Table(name = "roomes")  // you wrote "roomes", I keep it as you wrote
+@Table(name = "roomes")
 @Data
 public class Room2 {
     @Id

@@ -11,6 +11,6 @@ import java.util.List;
 public interface EquipmentRepository extends JpaRepository<Equipment, String> {
     List<Equipment> findByIsBookedTrue();
 
-    // Find all equipment where isBooked = false (available/non-booked)
+
     List<Equipment> findByIsBookedFalse();
 }

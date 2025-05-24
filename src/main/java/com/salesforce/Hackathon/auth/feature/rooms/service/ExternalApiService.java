@@ -20,12 +20,11 @@ public class ExternalApiService {
     public ExternalApiResponseDto fetchExternalData() {
         String url = "https://raw.githubusercontent.com/twentyTwo/sf-hackathon-bd-2025/refs/heads/main/data.json";
 
-        // Step 1: Get response as String
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 
         if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
             try {
-                // Step 2: Convert JSON string to DTO
+
                 return objectMapper.readValue(response.getBody(), ExternalApiResponseDto.class);
             } catch (Exception e) {
                 throw new RuntimeException("Failed to parse JSON response", e);

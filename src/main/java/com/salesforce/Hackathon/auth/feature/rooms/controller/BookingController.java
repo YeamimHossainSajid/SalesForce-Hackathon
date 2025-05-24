@@ -20,19 +20,18 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-    // Get all rooms
+
     @GetMapping("/rooms")
     public ResponseEntity<List<Room2>> getAllRooms() {
         return ResponseEntity.ok(bookingService.getAllRooms());
     }
 
-    // Get all equipment
+
     @GetMapping("/equipment")
     public ResponseEntity<List<Equipment>> getAllEquipment() {
         return ResponseEntity.ok(bookingService.getAllEquipment());
     }
 
-    // Book a resource (room or equipment)
     @PostMapping("/book")
     public ResponseEntity<?> bookResource(@RequestParam Long userId,
                                           @RequestParam String resourceId,
@@ -48,7 +47,7 @@ public class BookingController {
         }
     }
 
-    // Cancel a booking
+
     @PostMapping("/cancel")
     public ResponseEntity<?> cancelBooking(@RequestParam Long bookingId,
                                            @RequestParam Long userId) {
@@ -71,19 +70,17 @@ public class BookingController {
         return ResponseEntity.ok(bookingService.getBookedRooms());
     }
 
-    // Get all available (non-booked) rooms
     @GetMapping("/rooms/available")
     public ResponseEntity<List<Room2>> getAvailableRooms() {
         return ResponseEntity.ok(bookingService.getAvailableRooms());
     }
 
-    // Get all booked equipment
+
     @GetMapping("/equipment/booked")
     public ResponseEntity<List<Equipment>> getBookedEquipment() {
         return ResponseEntity.ok(bookingService.getBookedEquipment());
     }
 
-    // Get all available (non-booked) equipment
     @GetMapping("/equipment/available")
     public ResponseEntity<List<Equipment>> getAvailableEquipment() {
         return ResponseEntity.ok(bookingService.getAvailableEquipment());

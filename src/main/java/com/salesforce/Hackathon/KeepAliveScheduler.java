@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 public class KeepAliveScheduler {
 
     private static final Logger logger = LoggerFactory.getLogger(KeepAliveScheduler.class);
-    private static final String HEALTHCHECK_URL = "https://biggangolpo.onrender.com/healthcheck";
+    private static final String HEALTHCHECK_URL = "https://salesforce-hackathon-s8mr.onrender.com/healthcheck";
 
     @Scheduled(fixedRate =  300000)
     public void pingBackend() {

@@ -17,7 +17,6 @@ public interface RoomRepository extends JpaRepository<Room2, String> {
 
     List<Room2> findByIsBookedTrue();
 
-    // Find all rooms where isBooked = false (available/non-booked rooms)
     List<Room2> findByIsBookedFalse();
 
 

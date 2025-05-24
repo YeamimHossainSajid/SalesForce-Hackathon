@@ -16,7 +16,7 @@ public class SalesforceService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    // Salesforce credentials
+
     private final String clientId = "3MVG9fe4g9fhX0E5kgEO_FkTC4.S.o6gJin9.rPob_W9FRNAXNjui8wvwBSI.UKnJJk160mI5liMy0sEcZCTH";
     private final String clientSecret = "63A1AF62D661AA1F18E68FA8D86B3C04B4620023FDB51A6BACF142083B5F6B28";
     private final String username = "sfhackathonbd@2025.com";
