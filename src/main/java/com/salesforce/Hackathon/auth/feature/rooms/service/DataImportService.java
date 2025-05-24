@@ -26,13 +26,12 @@ public class DataImportService {
 
     @Transactional
     public void fetchAndSaveRoomsAndEquipment() throws Exception {
-        // Fetch JSON as String
+
         String json = restTemplate.getForObject(DATA_URL, String.class);
 
-        // Map JSON to ApiResponse DTO
+
         ApiResponse apiResponse = objectMapper.readValue(json, ApiResponse.class);
 
-        // Map and save Equipment
         var equipmentList = apiResponse.getEquipment().stream().map(dto -> {
             Equipment e = new Equipment();
             e.setId(dto.getId());
@@ -43,7 +42,6 @@ public class DataImportService {
         }).collect(Collectors.toList());
         equipmentRepository.saveAll(equipmentList);
 
-        // Map and save Rooms
         var roomList = apiResponse.getRooms().stream().map(dto -> {
             Room2 r = new Room2();
             r.setId(dto.getId());

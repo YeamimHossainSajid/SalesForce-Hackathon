@@ -1,7 +1,7 @@
 package com.salesforce.Hackathon.auth.feature.rooms.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.salesforce.Hackathon.auth.feature.rooms.dto.ExternalApiResponseDto;
+import com.salesforce.Hackathon.auth.feature.rooms.dto.response.ExternalApiResponseDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

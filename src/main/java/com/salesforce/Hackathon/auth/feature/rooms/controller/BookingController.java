@@ -88,4 +88,8 @@ public class BookingController {
     public ResponseEntity<List<Equipment>> getAvailableEquipment() {
         return ResponseEntity.ok(bookingService.getAvailableEquipment());
     }
+    @GetMapping("/bookingtime")
+    public ResponseEntity<List<Booking>> getAllBookings() {
+        return ResponseEntity.ok(bookingService.getBookings());
+    }
 }

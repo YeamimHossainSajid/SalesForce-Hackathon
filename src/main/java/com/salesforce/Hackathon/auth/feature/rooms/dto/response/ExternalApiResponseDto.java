@@ -1,4 +1,4 @@
-package com.salesforce.Hackathon.auth.feature.rooms.dto;
+package com.salesforce.Hackathon.auth.feature.rooms.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

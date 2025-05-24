@@ -99,7 +99,7 @@ public class BookingService {
         booking.setStatus("CANCELLED");
         bookingRepository.save(booking);
 
-        // Mark resource as unbooked
+
         String resourceType = booking.getResourceType();
         String resourceId = booking.getResourceId();
 
@@ -109,8 +109,6 @@ public class BookingService {
                 roomRepository.save(room);
             });
 
-            // Send room cancellation notification to all users
-            // Send cancellation notification to all users for both ROOM and EQUIPMENT
             List<User> allUsers = userRepo.findAll();
             for (User user : allUsers) {
                 emailService.sendRoomStatusEmail(user.getEmail(), resourceId, "CANCELLED",null,null);
@@ -135,10 +133,7 @@ public class BookingService {
         return roomRepository.findAll();
     }
 
-    /**
-     * Get all available equipment from the database.
-     * @return List of Equipment entities
-     */
+
     public List<Equipment> getAllEquipment() {
         return equipmentRepository.findAll();
     }
@@ -162,4 +157,7 @@ public class BookingService {
         return equipmentRepository.findByIsBookedFalse();
     }
 
+    public List<Booking> getBookings() {
+        return bookingRepository.findAll();
+    }
 }
