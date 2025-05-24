@@ -1,0 +1,23 @@
+//package com.salesforce.Hackathon.auth.feature.rooms.entity;
+//
+//import jakarta.persistence.*;
+//import lombok.Data;
+//
+//import java.util.List;
+//
+//@Entity
+//@Table(name = "roomes")
+//@Data
+//public class Room5 {
+//    @Id
+//    private String id;
+//
+//    private String name;
+//    private int capacity;
+//
+//    @ElementCollection
+//    @CollectionTable(name = "room_amenities", joinColumns = @JoinColumn(name = "room_id"))
+//    @Column(name = "amenity")
+//    private List<String> amenities1;
+//
+//}
