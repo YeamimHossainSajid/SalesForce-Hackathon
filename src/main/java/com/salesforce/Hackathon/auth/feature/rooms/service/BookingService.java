@@ -140,4 +140,20 @@ public class BookingService {
         return bookingRepository.findByUserId(userId);
     }
 
+    public List<Room2> getBookedRooms() {
+        return roomRepository.findByIsBookedTrue();
+    }
+
+    public List<Room2> getAvailableRooms() {
+        return roomRepository.findByIsBookedFalse();
+    }
+
+    public List<Equipment> getBookedEquipment() {
+        return equipmentRepository.findByIsBookedTrue();
+    }
+
+    public List<Equipment> getAvailableEquipment() {
+        return equipmentRepository.findByIsBookedFalse();
+    }
+
 }

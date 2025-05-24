@@ -65,4 +65,27 @@ public class BookingController {
     public ResponseEntity<List<Booking>> getUserBookings(@PathVariable String userId) {
         return ResponseEntity.ok(bookingService.getUserBookings(userId));
     }
+
+    @GetMapping("/rooms/booked")
+    public ResponseEntity<List<Room2>> getBookedRooms() {
+        return ResponseEntity.ok(bookingService.getBookedRooms());
+    }
+
+    // Get all available (non-booked) rooms
+    @GetMapping("/rooms/available")
+    public ResponseEntity<List<Room2>> getAvailableRooms() {
+        return ResponseEntity.ok(bookingService.getAvailableRooms());
+    }
+
+    // Get all booked equipment
+    @GetMapping("/equipment/booked")
+    public ResponseEntity<List<Equipment>> getBookedEquipment() {
+        return ResponseEntity.ok(bookingService.getBookedEquipment());
+    }
+
+    // Get all available (non-booked) equipment
+    @GetMapping("/equipment/available")
+    public ResponseEntity<List<Equipment>> getAvailableEquipment() {
+        return ResponseEntity.ok(bookingService.getAvailableEquipment());
+    }
 }
