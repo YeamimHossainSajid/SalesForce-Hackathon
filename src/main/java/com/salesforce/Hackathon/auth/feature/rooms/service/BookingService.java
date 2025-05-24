@@ -38,7 +38,7 @@ public class BookingService {
     }
 
 
-    public boolean isResourceAvailable(String resourceId, LocalDateTime start, LocalDateTime end) {
+    public boolean isResourceAvailable(String resourceId, String start, String end) {
         List<Booking> conflicting = bookingRepository.findByResourceIdAndStatusAndStartTimeLessThanAndEndTimeGreaterThan(
                 resourceId, "BOOKED", end, start);
         return conflicting.isEmpty();
@@ -47,7 +47,7 @@ public class BookingService {
 
     @Transactional
     public Booking bookResource(String userId, String resourceId, String resourceType,
-                                LocalDateTime start, LocalDateTime end) throws Exception {
+                                String start, String end) throws Exception {
         if (!resourceType.equalsIgnoreCase("ROOM") && !resourceType.equalsIgnoreCase("EQUIPMENT")) {
             throw new Exception("Invalid resource type");
         }

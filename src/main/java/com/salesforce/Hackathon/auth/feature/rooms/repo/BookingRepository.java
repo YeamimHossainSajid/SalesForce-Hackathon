@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BookingRepository extends JpaRepository<Booking, Long> {
     List<Booking> findByResourceIdAndStatusAndStartTimeLessThanAndEndTimeGreaterThan(
-            String resourceId, String status, LocalDateTime endTime, LocalDateTime startTime);
+            String resourceId, String status, String endTime, String startTime);
 
     List<Booking> findByUserId(String userId);
 }

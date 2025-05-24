@@ -37,11 +37,10 @@ public class BookingController {
     public ResponseEntity<?> bookResource(@RequestParam String userId,
                                           @RequestParam String resourceId,
                                           @RequestParam String resourceType,
-                                          @RequestParam String startTime,  // ISO date time string
-                                          @RequestParam String endTime) {
+                                          @RequestParam String start,  // ISO date time string
+                                          @RequestParam String end) {
         try {
-            LocalDateTime start = LocalDateTime.parse(startTime);
-            LocalDateTime end = LocalDateTime.parse(endTime);
+
             Booking booking = bookingService.bookResource(userId, resourceId, resourceType, start, end);
             return ResponseEntity.ok(booking);
         } catch (Exception e) {
