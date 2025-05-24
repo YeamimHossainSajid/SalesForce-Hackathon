@@ -34,10 +34,10 @@ public class BookingController {
 
     // Book a resource (room or equipment)
     @PostMapping("/book")
-    public ResponseEntity<?> bookResource(@RequestParam String userId,
+    public ResponseEntity<?> bookResource(@RequestParam Long userId,
                                           @RequestParam String resourceId,
                                           @RequestParam String resourceType,
-                                          @RequestParam String start,  // ISO date time string
+                                          @RequestParam String start,
                                           @RequestParam String end) {
         try {
 
@@ -51,7 +51,7 @@ public class BookingController {
     // Cancel a booking
     @PostMapping("/cancel")
     public ResponseEntity<?> cancelBooking(@RequestParam Long bookingId,
-                                           @RequestParam String userId) {
+                                           @RequestParam Long userId) {
         try {
             bookingService.cancelBooking(bookingId, userId);
             return ResponseEntity.ok("Booking cancelled successfully");

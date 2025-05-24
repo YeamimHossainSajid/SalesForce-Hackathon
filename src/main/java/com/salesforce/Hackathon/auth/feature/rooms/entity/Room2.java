@@ -15,6 +15,8 @@ public class Room2 {
     private String name;
     private int capacity;
 
+    private Boolean isBooked;
+
     @ElementCollection
     @CollectionTable(name = "room_amenities", joinColumns = @JoinColumn(name = "room_id"))
     @Column(name = "amenity")

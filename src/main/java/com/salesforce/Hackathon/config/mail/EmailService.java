@@ -51,6 +51,37 @@ public class EmailService {
     }
 
 
+    public void sendRoomStatusEmail(String toEmail, String roomId, String status) {
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+
+            helper.setTo(toEmail);
+            helper.setSubject("Room Booking Status Notification");
+
+            String text;
+            if ("BOOKED".equalsIgnoreCase(status)) {
+                text = "Room " + roomId + " has been successfully booked.";
+            } else if ("CANCELLED".equalsIgnoreCase(status)) {
+                text = "Room " + roomId + " is now free and available for booking.";
+            } else {
+                text = "Status update for Room " + roomId + ": " + status;
+            }
+
+            String html = "<html><body>"
+                    + "<h3>Room Booking Notification</h3>"
+                    + "<p>" + text + "</p>"
+                    + "<br/><p>Thank you,<br/>The BigganGolpo Team</p>"
+                    + "</body></html>";
+
+            helper.setText(text, html);
+
+            mailSender.send(message);
+        } catch (MessagingException e) {
+            throw new RuntimeException("Failed to send email", e);
+        }
+    }
+
 
 
 

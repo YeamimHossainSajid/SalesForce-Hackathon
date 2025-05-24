@@ -23,6 +23,8 @@ public interface UserRepo extends JpaRepository<User, Long > {
             """)
     User findByUsername(String username);
 
+
+
     @EntityGraph( attributePaths = { "roles" } )
     User findByUsernameOrEmail(String username, String email );
     @Query("""

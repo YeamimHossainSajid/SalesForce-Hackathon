@@ -17,6 +17,8 @@ public class Equipment {
     private String name;
     private String type;
 
+    private Boolean isBooked;
+
     @Column(name = "serial_number")
     private String serialNumber;
 }
